@@ -55,9 +55,17 @@ class Form extends Component {
             id="image-input"
           />
         </div>
+        <div>
+          <select name="" id="" data-testid="rare-input">
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito-raro">Muito raro</option>
+          </select>
+        </div>
       </form>
     );
   }
 }
+// data-testid="trunfo-input"
 
 export default Form;
