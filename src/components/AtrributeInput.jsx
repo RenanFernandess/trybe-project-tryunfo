@@ -5,10 +5,10 @@ class AtrributeInput extends Component {
   render() {
     const { atrributeName, name } = this.props;
     return (
-      <label htmlFor={ name }>
-        { atrributeName }
+      <div>
+        <label htmlFor={ name }>{ atrributeName }</label>
         <input type="number" name={ name } id={ name } />
-      </label>
+      </div>
     );
   }
 }
