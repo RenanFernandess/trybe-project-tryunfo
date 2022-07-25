@@ -47,6 +47,7 @@ class Form extends Component {
           />
         </div>
         <div>
+          <p>Imagem</p>
           <input
             type="text"
             name="image-input"
