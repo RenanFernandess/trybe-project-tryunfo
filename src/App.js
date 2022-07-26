@@ -23,8 +23,32 @@ class App extends React.Component {
     };
   }
 
-  onInputChange({ target: { name, value } }) {
-    this.setState({ [name]: value });
+  onInputChange({ target: { type, name, value, checked } }) {
+    this.setState({ [name]: (type === 'checkbox') ? checked : value }, () => {
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      } = this.state;
+
+      const CardStates = [
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      ];
+      console.log(CardStates.every((state) => state.length >= 1));
+      this.setState(
+        { isSaveButtonDisabled: !CardStates.every((state) => state.length >= 1) },
+      );
+    });
   }
 
   onSaveButtonClick() {

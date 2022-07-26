@@ -55,6 +55,7 @@ class Form extends Component {
               type="number"
               name="cardAttr1"
               required
+              max="90"
               value={ cardAttr1 }
               onInput={ onInputChange }
               id="cardAttr1"
@@ -66,6 +67,7 @@ class Form extends Component {
             <input
               type="number"
               name="cardAttr2"
+              max="90"
               required
               value={ cardAttr2 }
               onInput={ onInputChange }
@@ -78,6 +80,7 @@ class Form extends Component {
             <input
               type="number"
               name="cardAttr3"
+              max="90"
               required
               value={ cardAttr3 }
               onInput={ onInputChange }
