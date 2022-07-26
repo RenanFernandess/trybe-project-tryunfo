@@ -35,18 +35,27 @@ class App extends React.Component {
         cardRare,
       } = this.state;
 
-      const CardStates = [
+      const cardStates = [
         cardName,
         cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
         cardImage,
         cardRare,
       ];
-      console.log(CardStates.every((state) => state.length >= 1));
+      const cardAtrributes = [
+        Number(cardAttr1),
+        Number(cardAttr2),
+        Number(cardAttr3),
+      ];
+      const [Attr1, Attr2, Attr3] = cardAtrributes;
+      const atrributesSum = (Attr1 + Attr2 + Attr3);
+      const maxValueAtrr = 90;
+      const maxValueSumAtrr = 210;
+
       this.setState(
-        { isSaveButtonDisabled: !CardStates.every((state) => state.length >= 1) },
+        { isSaveButtonDisabled: !cardStates.every((state) => state.length >= 1)
+          || !cardAtrributes.every((number) => number >= 0 && number <= maxValueAtrr)
+          || (atrributesSum > maxValueSumAtrr),
+        },
       );
     });
   }
