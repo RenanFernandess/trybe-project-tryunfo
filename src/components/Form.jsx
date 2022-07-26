@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import './Form.css';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class Form extends Component {
   render() {
-    // const {
-    //   cardName,
-    //   cardDescription,
-    //   cardAttr1,
-    //   cardAttr2,
-    //   cardAttr3,
-    //   cardImage,
-    //   cardRare,
-    //   cardTrunfo,
-    //   hasTrunfo,
-    //   isSaveButtonDisabled,
-    //   onInputChange,
-    //   onSaveButtonClick,
-    // } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
 
     return (
       <form>
@@ -29,6 +29,8 @@ class Form extends Component {
             name="cardName"
             required
             maxLength="20"
+            value={ cardName }
+            onInput={ onInputChange }
             id="card-name"
             data-testid="name-input"
           />
@@ -41,6 +43,8 @@ class Form extends Component {
             cols="30"
             rows="10"
             required
+            value={ cardDescription }
+            onInput={ onInputChange }
             data-testid="description-input"
           />
         </div>
@@ -50,6 +54,9 @@ class Form extends Component {
             <input
               type="number"
               name="cardAttr1"
+              required
+              value={ cardAttr1 }
+              onInput={ onInputChange }
               id="cardAttr1"
               data-testid="attr1-input"
             />
@@ -59,6 +66,9 @@ class Form extends Component {
             <input
               type="number"
               name="cardAttr2"
+              required
+              value={ cardAttr2 }
+              onInput={ onInputChange }
               id="cardAttr2"
               data-testid="attr2-input"
             />
@@ -68,6 +78,9 @@ class Form extends Component {
             <input
               type="number"
               name="cardAttr3"
+              required
+              value={ cardAttr3 }
+              onInput={ onInputChange }
               id="cardAttr3"
               data-testid="attr3-input"
             />
@@ -78,14 +91,24 @@ class Form extends Component {
           <input
             type="text"
             name="cardImage"
+            required
             data-testid="image-input"
+            value={ cardImage }
+            onInput={ onInputChange }
             id="image-input"
           />
         </div>
         <div>
           <label htmlFor="select-rare">
             <strong>Raridade</strong>
-            <select name="cardRare" id="select-rare" data-testid="rare-input">
+            <select
+              name="cardRare"
+              required
+              id="select-rare"
+              data-testid="rare-input"
+              value={ cardRare }
+              onInput={ onInputChange }
+            >
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito raro</option>
@@ -99,31 +122,41 @@ class Form extends Component {
               type="checkbox"
               name="cardTrunfo"
               data-testid="trunfo-input"
+              disabled={ hasTrunfo }
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
               id="trunfo-input"
             />
           </label>
         </div>
         <div>
-          <button type="button" data-testid="save-button">Salvar</button>
+          <button
+            type="button"
+            disabled={ isSaveButtonDisabled }
+            data-testid="save-button"
+            onClick={ onSaveButtonClick }
+          >
+            Salvar
+          </button>
         </div>
       </form>
     );
   }
 }
 
-// Form.propTypes = {
-//   cardName: propTypes.string.isRequired,
-//   cardDescription: propTypes.string.isRequired,
-//   cardAttr1: propTypes.string.isRequired,
-//   cardAttr2: propTypes.string.isRequired,
-//   cardAttr3: propTypes.string.isRequired,
-//   cardImage: propTypes.string.isRequired,
-//   cardRare: propTypes.string.isRequired,
-//   cardTrunfo: propTypes.bool.isRequired,
-//   hasTrunfo: propTypes.bool.isRequired,
-//   isSaveButtonDisabled: propTypes.bool.isRequired,
-//   onInputChange: propTypes.func.isRequired,
-//   onSaveButtonClick: propTypes.func.isRequired,
-// };
+Form.propTypes = {
+  cardName: propTypes.string.isRequired,
+  cardDescription: propTypes.string.isRequired,
+  cardAttr1: propTypes.string.isRequired,
+  cardAttr2: propTypes.string.isRequired,
+  cardAttr3: propTypes.string.isRequired,
+  cardImage: propTypes.string.isRequired,
+  cardRare: propTypes.string.isRequired,
+  cardTrunfo: propTypes.bool.isRequired,
+  hasTrunfo: propTypes.bool.isRequired,
+  isSaveButtonDisabled: propTypes.bool.isRequired,
+  onInputChange: propTypes.func.isRequired,
+  onSaveButtonClick: propTypes.func.isRequired,
+};
 
 export default Form;
