@@ -7,44 +7,34 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
   }
 
   onInputChange({ target: { type, name, value, checked } }) {
     this.setState({ [name]: (type === 'checkbox') ? checked : value }, () => {
       const {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
+        cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
       } = this.state;
 
       const cardStates = [
-        cardName,
-        cardDescription,
-        cardImage,
-        cardRare,
+        cardName, cardDescription, cardImage, cardRare,
       ];
       const cardAtrributes = [
-        Number(cardAttr1),
-        Number(cardAttr2),
-        Number(cardAttr3),
+        Number(cardAttr1), Number(cardAttr2), Number(cardAttr3),
       ];
       const [Attr1, Attr2, Attr3] = cardAtrributes;
       const atrributesSum = (Attr1 + Attr2 + Attr3);
@@ -61,7 +51,36 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cards,
+    } = this.state;
+    const cardStates = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    };
+    cards.push(cardStates);
+    this.setState({
+      cards,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
   }
 
   render() {
