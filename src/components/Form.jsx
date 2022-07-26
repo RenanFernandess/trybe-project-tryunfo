@@ -28,7 +28,7 @@ class Form extends Component {
             type="text"
             name="cardName"
             required
-            maxLength="20"
+            maxLength="40"
             value={ cardName }
             onInput={ onInputChange }
             id="card-name"
