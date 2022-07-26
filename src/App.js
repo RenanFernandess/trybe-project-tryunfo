@@ -27,7 +27,14 @@ class App extends React.Component {
   onInputChange({ target: { type, name, value, checked } }) {
     this.setState({ [name]: (type === 'checkbox') ? checked : value }, () => {
       const {
-        cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
       } = this.state;
 
       const cardStates = [
@@ -40,6 +47,8 @@ class App extends React.Component {
       const atrributesSum = (Attr1 + Attr2 + Attr3);
       const maxValueAtrr = 90;
       const maxValueSumAtrr = 210;
+
+      if (cardTrunfo) this.setState({ hasTrunfo: true });
 
       this.setState(
         { isSaveButtonDisabled: !cardStates.every((state) => state.length >= 1)
