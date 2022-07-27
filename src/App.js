@@ -94,6 +94,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: (cardTrunfo) ? true : hasTrunfo,
+      isSaveButtonDisabled: true,
     });
   }
 
