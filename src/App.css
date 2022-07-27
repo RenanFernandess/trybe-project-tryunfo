@@ -48,6 +48,10 @@ main {
   grid-area: preview;
 }
 
+.preview section:nth-child( 1 ) {
+  margin: 0 auto;
+}
+
 .cards {
   align-items: center;
   display: flex;

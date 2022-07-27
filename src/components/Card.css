@@ -1,16 +1,17 @@
 :root {
+
   --crad-items-color: rgb(71, 71, 71);
 }
 
 .card {
-  flex: 2 1 280px;
   border: 1px solid rgb(75, 75, 75);
   border-radius: 10px;
   box-shadow: 1px 1px 1px rgb(89, 89, 89);
+  flex: 2 1 280px;
   max-height: 500px;
   min-height: 400px;
-  width: 270px;
   padding: 10px;
+  width: 270px;
 }
 
 .normal {
@@ -26,51 +27,51 @@
 }
 
 .card-Infos {
-  padding: 2px;
-  width: 100%;
-  min-height: 400px;
-  max-height: 400px;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 5% 53% 12% 10% 10% 5%;
-  grid-template-areas: 'title title'
-                      'img img'
-                      'descri descri'
-                      'power power'
-                      'force life'
-                      'rare rare';
   gap: 5px;
+  grid-template: 5% 55% 15% 10% 10% 5%;
+  grid-template-areas: 'title title'
+    'img img'
+    'descri descri'
+    'power power'
+    'force life'
+    'rare rare';
+  grid-template-columns: 1fr 1fr;
+  max-height: 400px;
+  min-height: 400px;
+  padding: 2px;
+  width: 100%;
 }
 
 .card-Infos img {
-  grid-area: img;
-  width: 100%;
-  min-height: 150px;
-  max-height: 210px;
   border: 1px solid var(--crad-items-color);
+  grid-area: img;
+  max-height: 200px;
+  min-height: 150px;
+  width: 100%;
 }
 
 .card-Infos p {
-  text-align: center;
   margin: auto;
+  text-align: center;
 }
 
 .card-title {
-  border-radius: 10px 10px 0 0;
   background-color: var(--crad-items-color);
+  border-radius: 10px 10px 0 0;
   grid-area: title;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .description-card {
-  border-radius: 0 0 10px 10px;
-  padding: 5px;
-  grid-area: descri;
   background-color: var(--crad-items-color);
-  width: 100%;
+  border-radius: 0 0 10px 10px;
+  grid-area: descri;
   height: 100%;
+  padding: 5px;
+  width: 100%;
 }
 
 .life {
@@ -85,18 +86,18 @@
   grid-area: power;
 }
 
-.rare-card{
-  grid-area: rare;
+.rare-card {
   font-weight: 900;
-  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  grid-area: rare;
+  text-shadow: 1px 1px 1px black;
 }
 
 .life, .force, .power {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  gap: 5px;
   background-color: var(--crad-items-color);
   border-radius: 10px;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 4fr 1fr;
   padding: 10px;
 }
 
