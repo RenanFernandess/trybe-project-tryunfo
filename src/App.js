@@ -34,7 +34,6 @@ class App extends React.Component {
         cardAttr3,
         cardImage,
         cardRare,
-        cardTrunfo,
       } = this.state;
 
       const cardStates = [
@@ -47,8 +46,6 @@ class App extends React.Component {
       const atrributesSum = (Attr1 + Attr2 + Attr3);
       const maxValueAtrr = 90;
       const maxValueSumAtrr = 210;
-
-      if (cardTrunfo) this.setState({ hasTrunfo: true });
 
       this.setState(
         { isSaveButtonDisabled: !cardStates.every((state) => state.length >= 1)
@@ -68,6 +65,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
       cards,
     } = this.state;
     const cardStates = {
@@ -78,6 +76,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
     cards.push(cardStates);
     this.setState({
@@ -89,6 +88,8 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: cards.some(({ cardTrunfo: trunfo }) => trunfo),
     });
   }
 
