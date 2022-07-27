@@ -129,7 +129,7 @@ class App extends React.Component {
           <h1>Tryunfo</h1>
         </header>
         <main>
-          <section className="container" id="Form-Container">
+          <section className="Form-Container container">
             <Form
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -145,7 +145,7 @@ class App extends React.Component {
               onSaveButtonClick={ this.onSaveButtonClick }
             />
           </section>
-          <section className="container" id="preview">
+          <section className="preview container">
             <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -157,7 +157,7 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
             />
           </section>
-          <section className="container" id="cards">
+          <section className="cards container">
             { cards.map((item) => {
               const {
                 cardName: name,
