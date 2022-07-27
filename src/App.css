@@ -1,0 +1,60 @@
+:root {
+  --main-background-color: rgb(42, 46, 49);
+  --items-background-color: rgb(60, 64, 68);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-background-color);
+  color: rgb(243, 235, 235);
+}
+
+header {
+  background-color: black;
+  top: 0;
+  left: 0;
+  height: 60px;
+  text-align: center;
+  padding: 10px 40px;
+}
+
+main {
+  padding: 40px;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "form preview"
+                       "cards cards";
+  gap: 20px;
+}
+
+.container {
+  padding: 30px;
+  background-color: var(--items-background-color);
+  border-radius: 10px;
+}
+
+#Form-Container {
+  grid-area: form;
+  
+}
+
+#preview {
+  grid-area: preview;
+}
+
+#cards {
+  grid-area: cards;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  min-height: 50px;
+}

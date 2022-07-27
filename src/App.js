@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
 import ButtonRemove from './components/ButtonRemove';
@@ -124,39 +125,39 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <header>
+          <h1>Tryunfo</h1>
+        </header>
         <main>
-          <section id="create-card">
-            <section id="Form-Container">
-              <Form
-                cardName={ cardName }
-                cardDescription={ cardDescription }
-                cardAttr1={ cardAttr1 }
-                cardAttr2={ cardAttr2 }
-                cardAttr3={ cardAttr3 }
-                cardImage={ cardImage }
-                cardRare={ cardRare }
-                cardTrunfo={ cardTrunfo }
-                hasTrunfo={ hasTrunfo }
-                isSaveButtonDisabled={ isSaveButtonDisabled }
-                onInputChange={ this.onInputChange }
-                onSaveButtonClick={ this.onSaveButtonClick }
-              />
-            </section>
-            <section id="preview">
-              <Card
-                cardName={ cardName }
-                cardDescription={ cardDescription }
-                cardAttr1={ cardAttr1 }
-                cardAttr2={ cardAttr2 }
-                cardAttr3={ cardAttr3 }
-                cardImage={ cardImage }
-                cardRare={ cardRare }
-                cardTrunfo={ cardTrunfo }
-              />
-            </section>
+          <section className="container" id="Form-Container">
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
           </section>
-          <section>
+          <section className="container" id="preview">
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </section>
+          <section className="container" id="cards">
             { cards.map((item) => {
               const {
                 cardName: name,

@@ -89,7 +89,7 @@ class Form extends Component {
             />
           </label>
           <label htmlFor="cardAttr3">
-            <strong>Velocidade</strong>
+            <strong>Vida</strong>
             <input
               type="number"
               name="cardAttr3"
