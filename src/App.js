@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import ButtonRemove from './components/ButtonRemove';
 
 class App extends React.Component {
   constructor() {
@@ -8,6 +9,7 @@ class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onRemoveButtonClick = this.onRemoveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -66,6 +68,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       cards,
     } = this.state;
     const cardStates = {
@@ -89,7 +92,19 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: cards.some(({ cardTrunfo: trunfo }) => trunfo),
+      hasTrunfo: (cardTrunfo) ? true : hasTrunfo,
+    });
+  }
+
+  onRemoveButtonClick({ target: { name } }) {
+    console.log('ok');
+    const { cards } = this.state;
+
+    const newCards = cards.filter(({ cardName }) => cardName !== name);
+    console.log(newCards);
+    this.setState({
+      cards: newCards,
+      hasTrunfo: newCards.some(({ cardTrunfo: trunfo }) => trunfo),
     });
   }
 
@@ -155,17 +170,22 @@ class App extends React.Component {
               } = item;
 
               return (
-                <Card
-                  key={ name }
-                  cardName={ name }
-                  cardDescription={ description }
-                  cardAttr1={ atrri1 }
-                  cardAttr2={ atrri2 }
-                  cardAttr3={ atrri3 }
-                  cardImage={ image }
-                  cardRare={ rare }
-                  cardTrunfo={ trunfo }
-                />
+                <section key={ name }>
+                  <Card
+                    cardName={ name }
+                    cardDescription={ description }
+                    cardAttr1={ atrri1 }
+                    cardAttr2={ atrri2 }
+                    cardAttr3={ atrri3 }
+                    cardImage={ image }
+                    cardRare={ rare }
+                    cardTrunfo={ trunfo }
+                  />
+                  <ButtonRemove
+                    cardName={ name }
+                    onRemoveButtonClick={ this.onRemoveButtonClick }
+                  />
+                </section>
               );
             }) }
           </section>
