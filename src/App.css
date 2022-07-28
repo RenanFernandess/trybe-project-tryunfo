@@ -1,6 +1,6 @@
 :root {
 
-  --main-background-color: rgb(42, 46, 49);
+  --main-background-color: rgb(35, 38, 41);
 
   --items-background-color: rgb(60, 64, 68);
 }
@@ -28,9 +28,9 @@ header {
 main {
   display: grid;
   gap: 20px;
-  grid-template-areas: 'form preview'
-    'cards cards';
-  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'form form preview preview'
+    'filter cards cards cards';
+  grid-template-columns: repeat(4, 1fr);
   padding: 40px;
 }
 
@@ -52,13 +52,25 @@ main {
   margin: 0 auto;
 }
 
+.cards-container {
+  grid-area: cards;
+  min-height: 50px;
+  width: 100%;
+}
+
+.cards-container h2:nth-child( 1 ) {
+  text-align: center;
+}
+
 .cards {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
-  grid-area: cards;
   justify-content: center;
-  min-height: 50px;
-  width: 100%;
+}
+
+.filter {
+  grid-area: filter;
+  text-align: center;
 }

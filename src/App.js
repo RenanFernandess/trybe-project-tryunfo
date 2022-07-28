@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
 import ButtonRemove from './components/ButtonRemove';
+import Filters from './components/Filters';
 
 class App extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
+      nameFilter: '',
     };
   }
 
@@ -123,7 +125,11 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       cards,
+      nameFilter,
     } = this.state;
+
+    const filteredCards = cards
+      .filter(({ cardName: name }) => name.includes(nameFilter) || !nameFilter);
     return (
       <div>
         <header>
@@ -158,38 +164,45 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
             />
           </section>
-          <section className="cards container">
-            { cards.map((item) => {
-              const {
-                cardName: name,
-                cardDescription: description,
-                cardAttr1: atrri1,
-                cardAttr2: atrri2,
-                cardAttr3: atrri3,
-                cardImage: image,
-                cardRare: rare,
-                cardTrunfo: trunfo,
-              } = item;
+          <section className="filter container">
+            <h2>Filtros de busca</h2>
+            <Filters nameFilter={ nameFilter } onInputChange={ this.onInputChange } />
+          </section>
+          <section className="cards-container container">
+            <h2>Todas as cartas</h2>
+            <section className="cards">
+              { filteredCards.map((item) => {
+                const {
+                  cardName: name,
+                  cardDescription: description,
+                  cardAttr1: atrri1,
+                  cardAttr2: atrri2,
+                  cardAttr3: atrri3,
+                  cardImage: image,
+                  cardRare: rare,
+                  cardTrunfo: trunfo,
+                } = item;
 
-              return (
-                <section key={ name }>
-                  <Card
-                    cardName={ name }
-                    cardDescription={ description }
-                    cardAttr1={ atrri1 }
-                    cardAttr2={ atrri2 }
-                    cardAttr3={ atrri3 }
-                    cardImage={ image }
-                    cardRare={ rare }
-                    cardTrunfo={ trunfo }
-                  />
-                  <ButtonRemove
-                    cardName={ name }
-                    onRemoveButtonClick={ this.onRemoveButtonClick }
-                  />
-                </section>
-              );
-            }) }
+                return (
+                  <section key={ name }>
+                    <Card
+                      cardName={ name }
+                      cardDescription={ description }
+                      cardAttr1={ atrri1 }
+                      cardAttr2={ atrri2 }
+                      cardAttr3={ atrri3 }
+                      cardImage={ image }
+                      cardRare={ rare }
+                      cardTrunfo={ trunfo }
+                    />
+                    <ButtonRemove
+                      cardName={ name }
+                      onRemoveButtonClick={ this.onRemoveButtonClick }
+                    />
+                  </section>
+                );
+              }) }
+            </section>
           </section>
         </main>
       </div>
