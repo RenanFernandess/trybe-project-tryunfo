@@ -27,6 +27,7 @@ class App extends React.Component {
       cards: [],
       nameFilter: '',
       rareFilter: 'todas',
+      trunfoFilter: false,
     };
   }
 
@@ -128,11 +129,13 @@ class App extends React.Component {
       cards,
       nameFilter,
       rareFilter,
+      trunfoFilter,
     } = this.state;
 
     const filteredCards = cards
       .filter(({ cardName: name }) => name.includes(nameFilter) || !nameFilter)
-      .filter(({ cardRare: rare }) => rare === rareFilter || rareFilter === 'todas');
+      .filter(({ cardRare: rare }) => rare === rareFilter || rareFilter === 'todas')
+      .filter(({ cardTrunfo: trunfo }) => trunfo || !trunfoFilter);
     return (
       <div>
         <header>
@@ -172,6 +175,7 @@ class App extends React.Component {
             <Filters
               nameFilter={ nameFilter }
               rareFilter={ rareFilter }
+              trunfoFilter={ trunfoFilter }
               onInputChange={ this.onInputChange }
             />
           </section>
