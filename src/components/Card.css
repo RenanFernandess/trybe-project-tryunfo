@@ -58,9 +58,9 @@
   background-color: var(--crad-items-color);
   border-radius: 10px 10px 0 0;
   grid-area: title;
+  padding: 2px;
   text-align: center;
   width: 100%;
-  padding: 2px;
 }
 
 .description-card {
