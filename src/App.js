@@ -26,6 +26,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       cards: [],
       nameFilter: '',
+      rareFilter: 'todas',
     };
   }
 
@@ -126,10 +127,12 @@ class App extends React.Component {
       isSaveButtonDisabled,
       cards,
       nameFilter,
+      rareFilter,
     } = this.state;
 
     const filteredCards = cards
-      .filter(({ cardName: name }) => name.includes(nameFilter) || !nameFilter);
+      .filter(({ cardName: name }) => name.includes(nameFilter) || !nameFilter)
+      .filter(({ cardRare: rare }) => rare === rareFilter || rareFilter === 'todas');
     return (
       <div>
         <header>
@@ -166,7 +169,11 @@ class App extends React.Component {
           </section>
           <section className="filter container">
             <h2>Filtros de busca</h2>
-            <Filters nameFilter={ nameFilter } onInputChange={ this.onInputChange } />
+            <Filters
+              nameFilter={ nameFilter }
+              rareFilter={ rareFilter }
+              onInputChange={ this.onInputChange }
+            />
           </section>
           <section className="cards-container container">
             <h2>Todas as cartas</h2>
